@@ -1,0 +1,28 @@
+{
+  "name": "mastery-cli",
+  "version": "0.0.1",
+  "description": "MasteryJS command line utility",
+  "main": "index.js",
+  "bin": {
+    "mastery": "index.js"
+  },
+  "repository": {
+    "url": "https://github.com/labibramadhan/mastery-cli.git",
+    "type": "git"
+  },
+  "author": "Muhammad Labib Ramadhan",
+  "email": "mlabib.ramadhan@gmail.com",
+  "license": "Apache-2.0",
+  "keywords": [
+    "hapi",
+    "api",
+    "cli",
+    "rest",
+    "sequelize",
+    "generator",
+    "boilerplate",
+    "starter",
+    "basecode",
+    "springboard"
+  ]
+}
