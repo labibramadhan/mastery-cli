@@ -1,5 +1,5 @@
 {
-  "name": "mastery-cli",
+  "name": "mastery",
   "version": "0.0.1",
   "description": "MasteryJS command line utility",
   "main": "index.js",
