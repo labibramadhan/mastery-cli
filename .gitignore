@@ -1,2 +1,6 @@
-node_modules
+.idea
 .history
+build
+node_modules
+*.lock
+*.log
