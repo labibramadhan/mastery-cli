@@ -1,14 +1,15 @@
 {
   "presets": [
+    "es2015",
     "stage-1"
   ],
   "plugins": [
     "add-module-exports",
     "transform-runtime",
+    "transform-decorators-legacy",
     "transform-class-properties",
     "transform-es2015-classes",
-    "transform-flow-strip-types",
-    "transform-es2015-modules-commonjs"
+    "transform-flow-strip-types"
   ],
   "sourceMaps": "inline"
 }
