@@ -3,9 +3,9 @@ import program from 'commander';
 const NewCommand = requireF('packages/mastery/new/components/NewCommand');
 
 program
-  .command('new')
+  .command('new [destination]')
   .description('create a new MasteryJS project')
-  .action(() => {
+  .action((destination = '.') => {
     const newCommand = new NewCommand();
-    newCommand.execute(arguments);
+    newCommand.execute(destination);
   });
