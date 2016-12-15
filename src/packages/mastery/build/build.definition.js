@@ -1,6 +1,6 @@
 import program from 'commander';
 
-const BuildCommand = require('./components/BuildCommand');
+const BuildCommand = requireF('packages/mastery/build/components/BuildCommand');
 
 program
   .command('build')

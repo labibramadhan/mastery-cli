@@ -1,6 +1,6 @@
 import program from 'commander';
 
-const NewCommand = require('./components/NewCommand');
+const NewCommand = requireF('packages/mastery/new/components/NewCommand');
 
 program
   .command('new')

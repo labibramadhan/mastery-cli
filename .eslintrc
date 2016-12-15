@@ -6,6 +6,8 @@
   "extends": "airbnb",
   "globals": {
     "conf": true,
+    "pkg": true,
+    "requireF": true,
     "rootPath": true
   },
   "rules": {

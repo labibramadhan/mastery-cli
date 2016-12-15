@@ -1,7 +1,10 @@
 import _ from 'lodash';
 import glob from 'glob';
+import path from 'path';
 
 export default class CommonServices {
+  static requireF = (file: string) => require(path.join(rootPath, file));
+
   static globSyncMultiple = (patterns: Array) => {
     let results = [];
 
@@ -13,7 +16,7 @@ export default class CommonServices {
     return results;
   }
 
-  static requireAll = (pattern) => {
+  static requireAll = (pattern: string) => {
     const results = {};
     const patternCollection = _.castArray(pattern);
     const patternFiles = CommonServices.globSyncMultiple(patternCollection);

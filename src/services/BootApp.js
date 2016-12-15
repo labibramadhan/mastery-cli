@@ -3,7 +3,7 @@ import path from 'path';
 
 const {
   requireAll,
-} = require('../services/CommonServices');
+} = requireF('services/CommonServices');
 
 export default class BootApp {
   boot = async () => {
