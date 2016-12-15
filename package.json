@@ -11,7 +11,7 @@
   },
   "author": "Muhammad Labib Ramadhan",
   "email": "mlabib.ramadhan@gmail.com",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "keywords": [
     "hapi",
     "api",
