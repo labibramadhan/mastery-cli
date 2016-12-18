@@ -56,7 +56,7 @@ export default class NewCommand {
   }
 
   install = () => {
-    execSync('npm install --production', {
+    execSync('npm install', {
       stdio: 'inherit',
     });
   }
@@ -92,7 +92,7 @@ export default class NewCommand {
       '*************************************************************\n',
       '**\n',
       '**  To kick start your installation, type the following commands:\n',
-      `**  >_ cd ${this.resolvedDestination}\n`,
+      `**  >_ cd ${this.destDir}\n`,
       '**  >_ mastery debug\n',
       '**\n',
       '*************************************************************\n',
@@ -101,6 +101,7 @@ export default class NewCommand {
   }
 
   execute = async (destDir: string) => {
+    this.destDir = destDir;
     this.resolvedDestination = path.resolve(path.join(destDir));
 
     console.log(ColorizeText.info(this.MK_INTRO));
