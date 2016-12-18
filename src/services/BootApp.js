@@ -65,8 +65,8 @@ export default class BootApp {
 
     this.bootConf();
 
-    this.bootCommander();
-
     this.bootCLI();
+
+    this.bootCommander();
   }
 }
