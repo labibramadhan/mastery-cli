@@ -1,6 +1,6 @@
 {
   "name": "mastery",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MasteryJS command line utility",
   "bin": {
     "mastery": "build/index.js"
