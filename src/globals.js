@@ -10,3 +10,6 @@ const {
 global.requireF = requireF;
 global.pkg = require(path.join(rootPath, '../package.json'));
 global.conf = nconf;
+
+const constants = requireF('./constants');
+global.constants = constants;

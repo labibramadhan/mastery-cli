@@ -9,10 +9,11 @@
     "request": "launch",
     "program": "${workspaceRoot}/src/index.js",
     "args": [
-      "new"
+      "new",
+      "test"
     ],
     "sourceMaps": true,
-    "cwd": "${workspaceRoot}",
+    "cwd": "${workspaceRoot}/test",
     "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/babel-node"
   }]
 }
