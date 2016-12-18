@@ -69,7 +69,10 @@ export default class NewCommand {
       _.unset(targetPackage, key);
     });
     const newPackage = _.merge(_.clone(answerValues), targetPackage);
-    fs.writeFileSync(path.join(this.resolvedDestination, 'package.json'), JSON.stringify(newPackage, null, 2));
+    fs.writeFileSync(
+      path.join(this.resolvedDestination, 'package.json'),
+      JSON.stringify(newPackage, null, 2),
+    );
   }
 
   cleanFiles = () => {

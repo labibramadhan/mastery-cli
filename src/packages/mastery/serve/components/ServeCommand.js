@@ -10,7 +10,7 @@ const {
   validateRootDir,
 } = requireF('services/CommonValidations');
 
-export default class DebugCommand {
+export default class ServeCommand {
   execute = (options = {}) => {
     validateRootDir();
 

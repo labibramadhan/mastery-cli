@@ -15,6 +15,10 @@
     "global-require": 0,
     "import/no-dynamic-require": 0,
     "import/prefer-default-export": 0,
-    "max-len": ["error", 100, {"ignoreComments": true}]
+    "max-len": ["error", 100, {
+      "ignoreComments": true,
+      "ignoreTemplateLiterals": true
+    }],
+    "no-console": 0
   }
 }
