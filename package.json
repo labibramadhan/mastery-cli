@@ -1,9 +1,9 @@
 {
   "name": "mastery",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "MasteryJS command line utility",
   "bin": {
-    "mastery": "build/index.js"
+    "mastery": "build/cli.js"
   },
   "repository": {
     "url": "https://github.com/labibramadhan/mastery-cli.git",
