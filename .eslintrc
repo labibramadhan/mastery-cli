@@ -9,7 +9,8 @@
     "constants": true,
     "pkg": true,
     "requireF": true,
-    "rootPath": true
+    "rootPath": true,
+    "throwError": true
   },
   "rules": {
     "global-require": 0,

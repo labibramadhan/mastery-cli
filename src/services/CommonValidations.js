@@ -43,7 +43,7 @@ export default class CommonValidations {
       const method = `is${_.capitalize(file.type)}`;
       const filePath = path.join(resolvedBasePath, file.path);
       if (!fs.existsSync(filePath) || !fs.lstatSync(filePath)[method]()) {
-        throw new Error(chalk.red(CommonValidations.MK_ROOT_DIR_INVALID));
+        throwError(chalk.red(CommonValidations.MK_ROOT_DIR_INVALID));
       }
     });
   }
@@ -62,7 +62,7 @@ export default class CommonValidations {
     const resolvedBasePath = path.resolve(basePath);
     const runConfPath = path.join(resolvedBasePath, constants.RUN_FILE);
     if (!fs.existsSync(runConfPath) || !fs.lstatSync(runConfPath).isFile()) {
-      throw new Error(chalk.red(CommonValidations.MK_BUILD_DIR_INVALID));
+      throwError(chalk.red(CommonValidations.MK_BUILD_DIR_INVALID));
     }
   }
 }

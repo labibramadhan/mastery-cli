@@ -10,6 +10,11 @@ const {
 global.requireF = requireF;
 global.pkg = require(path.join(rootPath, '../package.json'));
 global.conf = nconf;
+global.throwError = (errString: string, code: number = 1) => {
+  console.error(errString);
+  console.log('');
+  process.exit(code);
+};
 
 const constants = requireF('./constants');
 global.constants = constants;
