@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import chalk from 'chalk';
 import fs from 'fs';
 import path from 'path';
 
@@ -43,7 +42,7 @@ export default class CommonValidations {
       const method = `is${_.capitalize(file.type)}`;
       const filePath = path.join(resolvedBasePath, file.path);
       if (!fs.existsSync(filePath) || !fs.lstatSync(filePath)[method]()) {
-        throwError(chalk.red(CommonValidations.MK_ROOT_DIR_INVALID));
+        throwError(CommonValidations.MK_ROOT_DIR_INVALID);
       }
     });
   }
@@ -62,7 +61,7 @@ export default class CommonValidations {
     const resolvedBasePath = path.resolve(basePath);
     const runConfPath = path.join(resolvedBasePath, constants.RUN_FILE);
     if (!fs.existsSync(runConfPath) || !fs.lstatSync(runConfPath).isFile()) {
-      throwError(chalk.red(CommonValidations.MK_BUILD_DIR_INVALID));
+      throwError(CommonValidations.MK_BUILD_DIR_INVALID);
     }
   }
 }
