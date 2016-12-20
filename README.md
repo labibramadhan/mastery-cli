@@ -2,6 +2,8 @@
 
 Command line utility to get started easily on [MasteryJS](https://github.com/labibramadhan/mastery).
 
+[API Documentation](https://labibramadhan.github.io/mastery-cli/api/index.html)
+
 ## Table of Contents
 1. [Main Features](#main-features)
 1. [Getting Started](#getting-started)
@@ -34,8 +36,13 @@ npm install -g mastery
 
 #### MacOS/Linux
 
-Type ``` sudo npm install -g mastery ``` on your terminal.
+```
+sudo npm install -g mastery
+```
 
 ### Running
 
-Type ``` mastery --help ``` to get started.
+To get started, type:
+```
+mastery --help
+```
