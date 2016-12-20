@@ -2,6 +2,10 @@
 
 Command line utility to get started easily on [MasteryJS](https://github.com/labibramadhan/mastery).
 
+[![npm version](https://badge.fury.io/js/mastery.svg)](https://badge.fury.io/js/mastery)
+[![Dependency Status](https://david-dm.org/labibramadhan/mastery-cli.svg)](https://david-dm.org/labibramadhan/mastery-cli)
+[![devDependency Status](https://david-dm.org/labibramadhan/mastery-cli/dev-status.svg)](https://david-dm.org/labibramadhan/mastery-cli?type=dev)
+
 [API Documentation](https://labibramadhan.github.io/mastery-cli/api/index.html)
 
 ## Table of Contents
