@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>NewCommand - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BootApp.html">BootApp</a><ul class='methods'><li data-type='method'><a href="BootApp.html#boot">boot</a></li><li data-type='method'><a href="BootApp.html#bootCommander">bootCommander</a></li><li data-type='method'><a href="BootApp.html#bootConf">bootConf</a></li><li data-type='method'><a href="BootApp.html#welcome">welcome</a></li></ul></li><li><a href="BuildCommand.html">BuildCommand</a><ul class='methods'><li data-type='method'><a href="BuildCommand.html#copyJS">copyJS</a></li><li data-type='method'><a href="BuildCommand.html#copyNonJS">copyNonJS</a></li><li data-type='method'><a href="BuildCommand.html#execute">execute</a></li><li data-type='method'><a href="BuildCommand.html#writeRunConf">writeRunConf</a></li></ul></li><li><a href="ColorizeText.html">ColorizeText</a><ul class='methods'><li data-type='method'><a href="ColorizeText.html#.danger">danger</a></li><li data-type='method'><a href="ColorizeText.html#.info">info</a></li><li data-type='method'><a href="ColorizeText.html#.warn">warn</a></li></ul></li><li><a href="CommonServices.html">CommonServices</a><ul class='methods'><li data-type='method'><a href="CommonServices.html#.getServerName">getServerName</a></li><li data-type='method'><a href="CommonServices.html#.getTargetPackage">getTargetPackage</a></li><li data-type='method'><a href="CommonServices.html#.getTargetRunConf">getTargetRunConf</a></li><li data-type='method'><a href="CommonServices.html#.globSyncMultiple">globSyncMultiple</a></li><li data-type='method'><a href="CommonServices.html#.requireAll">requireAll</a></li><li data-type='method'><a href="CommonServices.html#.requireF">requireF</a></li><li data-type='method'><a href="CommonServices.html#.transformOption">transformOption</a></li></ul></li><li><a href="CommonValidations.html">CommonValidations</a><ul class='methods'><li data-type='method'><a href="CommonValidations.html#.validateBuildDir">validateBuildDir</a></li><li data-type='method'><a href="CommonValidations.html#.validateRootDir">validateRootDir</a></li></ul></li><li><a href="NewCommand.html">NewCommand</a><ul class='methods'><li data-type='method'><a href="NewCommand.html#clone">clone</a></li><li data-type='method'><a href="NewCommand.html#execute">execute</a></li><li data-type='method'><a href="NewCommand.html#guidance">guidance</a></li><li data-type='method'><a href="NewCommand.html#install">install</a></li><li data-type='method'><a href="NewCommand.html#querying">querying</a></li><li data-type='method'><a href="NewCommand.html#writeJSONPackage">writeJSONPackage</a></li></ul></li><li><a href="ReloadCommand.html">ReloadCommand</a><ul class='methods'><li data-type='method'><a href="ReloadCommand.html#execute">execute</a></li></ul></li><li><a href="ServeCommand.html">ServeCommand</a><ul class='methods'><li data-type='method'><a href="ServeCommand.html#execute">execute</a></li></ul></li><li><a href="StartCommand.html">StartCommand</a><ul class='methods'><li data-type='method'><a href="StartCommand.html#execute">execute</a></li><li data-type='method'><a href="StartCommand.html#startPM2">startPM2</a></li><li data-type='method'><a href="StartCommand.html#streamLogs">streamLogs</a></li></ul></li><li><a href="StatusCommand.html">StatusCommand</a><ul class='methods'><li data-type='method'><a href="StatusCommand.html#execute">execute</a></li></ul></li><li><a href="StopCommand.html">StopCommand</a><ul class='methods'><li data-type='method'><a href="StopCommand.html#execute">execute</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#conf">conf</a></li><li><a href="global.html#constants">constants</a></li><li><a href="global.html#pkg">pkg</a></li><li><a href="global.html#requireF">requireF</a></li><li><a href="global.html#rootPath">rootPath</a></li><li><a href="global.html#throwError">throwError</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">NewCommand</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        NewCommand
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+
+    <h4 class="name" id="NewCommand"><span class="type-signature"></span>new NewCommand<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="packages_mastery_new_components_NewCommand.js.html">packages/mastery/new/components/NewCommand.js</a>, <a href="packages_mastery_new_components_NewCommand.js.html#line51">line 51</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>MK_INTRO</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The translation key of 'intro' phase message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>MK_CLONING</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The translation key of 'cloning' phase message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>MK_INSTALLING</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The translation key of 'installing' phase message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>CK_REPO</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The configuration hierarchical key to retrieve from nconf</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description">
+    The main class that handles the 'new' command execution.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="clone"><span class="type-signature"></span>clone<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="packages_mastery_new_components_NewCommand.js.html">packages/mastery/new/components/NewCommand.js</a>, <a href="packages_mastery_new_components_NewCommand.js.html#line113">line 113</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Clone latest project version from MasteryJS github repo.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="execute"><span class="type-signature"></span>execute<span class="signature">(destDir)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="packages_mastery_new_components_NewCommand.js.html">packages/mastery/new/components/NewCommand.js</a>, <a href="packages_mastery_new_components_NewCommand.js.html#line168">line 168</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    The main method to call another methods sequentially, including decorations output.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>destDir</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A relative destination directory path</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="guidance"><span class="type-signature"></span>guidance<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="packages_mastery_new_components_NewCommand.js.html">packages/mastery/new/components/NewCommand.js</a>, <a href="packages_mastery_new_components_NewCommand.js.html#line158">line 158</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Show some guidance text to help user deciding what to do next.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="install"><span class="type-signature"></span>install<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="packages_mastery_new_components_NewCommand.js.html">packages/mastery/new/components/NewCommand.js</a>, <a href="packages_mastery_new_components_NewCommand.js.html#line127">line 127</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Install npm packages for both dev and production dependencies.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="querying"><span class="type-signature"></span>querying<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;Object>>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="packages_mastery_new_components_NewCommand.js.html">packages/mastery/new/components/NewCommand.js</a>, <a href="packages_mastery_new_components_NewCommand.js.html#line78">line 78</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Give user some questions to fill some package.json keys.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    User answers, with question key as its key and answer as its value
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Array.&lt;Object>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="writeJSONPackage"><span class="type-signature"></span>writeJSONPackage<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="packages_mastery_new_components_NewCommand.js.html">packages/mastery/new/components/NewCommand.js</a>, <a href="packages_mastery_new_components_NewCommand.js.html#line135">line 135</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Write a new package.json file merged with user answers before.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Dec 20 2016 21:20:52 GMT+0700 (WIB) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

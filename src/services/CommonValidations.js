@@ -7,6 +7,8 @@ import path from 'path';
  *
  * @export
  * @class CommonValidations
+ * @property {string} MK_BUILD_DIR_INVALID The translation key of message to show when current directory is not a MasteryJS build directory
+ * @property {string} MK_ROOT_DIR_INVALID The translation key of message to show when current directory is not a MasteryJS root directory
  */
 export default class CommonValidations {
   static MK_BUILD_DIR_INVALID = 'Current directory is not a MasteryJS build directory';
@@ -20,7 +22,9 @@ export default class CommonValidations {
    * process.chdir('build');
    * validateRootDir();
    *
-   * @param  {string} basePath
+   * @function
+   * @name CommonValidations.validateRootDir
+   * @param  {string} [basePath=.] The relative path to check
    */
   static validateRootDir(basePath:string = '.') {
     const resolvedBasePath = path.resolve(basePath);
@@ -55,7 +59,9 @@ export default class CommonValidations {
    * process.chdir('/Users/labibramadhan/Desktop');
    * validateBuildDir();
    *
-   * @param  {string} basePath
+   * @function
+   * @name CommonValidations.validateBuildDir
+   * @param  {string} [basePath=.] The relative path to check
    */
   static validateBuildDir(basePath:string = '.') {
     const resolvedBasePath = path.resolve(basePath);

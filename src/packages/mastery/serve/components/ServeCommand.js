@@ -10,8 +10,19 @@ const {
   validateRootDir,
 } = requireF('services/CommonValidations');
 
+/**
+ * The main class that handles the 'serve' command execution.
+ *
+ * @export
+ * @class ServeCommand
+ */
 export default class ServeCommand {
-  execute = (options = {}) => {
+  /**
+   * The main method that exec babel-node command to run the MasteryJS directly from src directory.
+   *
+   * @param {Object} [options={}] The options come from Commander JS action argument
+   */
+  execute(options = {}) {
     validateRootDir();
 
     const basePath = path.resolve('.');

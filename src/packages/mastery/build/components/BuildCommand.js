@@ -20,6 +20,21 @@ const {
   validateRootDir,
 } = requireF('services/CommonValidations');
 
+/**
+ * The main class that handles the 'build' command execution.
+ *
+ * @export
+ * @class BuildCommand
+ * @property {string} JS_GLOB A glob pattern where javascript files are
+ * @property {string[]} COPY_GLOB Glob patterns where non javascript files are
+ * @property {string} TARGET_DIR The build directory relative path from root project directory
+ * @property {string} MK_BUILDING The translation key of 'building' phase message
+ * @property {string} MK_BUILT The translation key of 'built' phase message
+ * @property {string} MK_DELETING The translation key of 'deleting' phase message
+ * @property {string} MK_COPYING_NON_JS The translation key of 'copying non javascript files' phase message
+ * @property {string} MK_COPYING_JS The translation key of 'copying javascript files' phase message
+ * @property {string} MK_WRITING_RUN_CONF The translation key of 'writing mastery.run.js file' phase message
+ */
 export default class BuildCommand {
   JS_GLOB = 'src/**/*.js';
   COPY_GLOB = [
@@ -38,11 +53,16 @@ export default class BuildCommand {
   MK_COPYING_JS = 'Copying javascript files..';
   MK_WRITING_RUN_CONF = 'Writing run configuration..';
 
-  copyNonJS() {
+  /**
+   * Copy none javascript files such as json configuration files, etc.
+   *
+   * @returns {Promise}
+   */
+  async copyNonJS() {
     const copyGlobs = _.map(
       _.castArray(this.COPY_GLOB), val => path.join(this.basePath, val),
     );
-    return new Promise((resolve) => {
+    await new Promise((resolve) => {
       gulp
         .src(copyGlobs)
         .pipe(gulpCopy(this.targetDir, {
@@ -53,7 +73,12 @@ export default class BuildCommand {
     });
   }
 
-  copyJS = async () => {
+  /**
+   * Copy javascript files -> transform using babel -> uglify -> write sourcemaps.
+   *
+   * @returns {Promise}
+   */
+  async copyJS() {
     const self = this;
     const jsGlobs = _.map(_.castArray(self.JS_GLOB), val => path.join(self.basePath, val));
     await new Promise((resolve) => {
@@ -79,6 +104,9 @@ export default class BuildCommand {
     });
   }
 
+  /**
+   * Write mastery.run.json file, append 'name' key value from project name question answered by user before.
+   */
   writeRunConf() {
     process.chdir('./build');
     const runConf = _.merge(constants.DEFAULT_RUN_CONF, {
@@ -89,7 +117,12 @@ export default class BuildCommand {
     }, null, 2));
   }
 
-  execute = async () => {
+  /**
+   * The main method to call another methods sequentially, including decorations output.
+   *
+   * @returns {Promise}
+   */
+  async execute() {
     validateRootDir();
 
     this.basePath = path.resolve('.');

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>services/ColorizeText.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BootApp.html">BootApp</a><ul class='methods'><li data-type='method'><a href="BootApp.html#boot">boot</a></li><li data-type='method'><a href="BootApp.html#bootCommander">bootCommander</a></li><li data-type='method'><a href="BootApp.html#bootConf">bootConf</a></li><li data-type='method'><a href="BootApp.html#welcome">welcome</a></li></ul></li><li><a href="BuildCommand.html">BuildCommand</a><ul class='methods'><li data-type='method'><a href="BuildCommand.html#copyJS">copyJS</a></li><li data-type='method'><a href="BuildCommand.html#copyNonJS">copyNonJS</a></li><li data-type='method'><a href="BuildCommand.html#execute">execute</a></li><li data-type='method'><a href="BuildCommand.html#writeRunConf">writeRunConf</a></li></ul></li><li><a href="ColorizeText.html">ColorizeText</a><ul class='methods'><li data-type='method'><a href="ColorizeText.html#.danger">danger</a></li><li data-type='method'><a href="ColorizeText.html#.info">info</a></li><li data-type='method'><a href="ColorizeText.html#.warn">warn</a></li></ul></li><li><a href="CommonServices.html">CommonServices</a><ul class='methods'><li data-type='method'><a href="CommonServices.html#.getServerName">getServerName</a></li><li data-type='method'><a href="CommonServices.html#.getTargetPackage">getTargetPackage</a></li><li data-type='method'><a href="CommonServices.html#.getTargetRunConf">getTargetRunConf</a></li><li data-type='method'><a href="CommonServices.html#.globSyncMultiple">globSyncMultiple</a></li><li data-type='method'><a href="CommonServices.html#.requireAll">requireAll</a></li><li data-type='method'><a href="CommonServices.html#.requireF">requireF</a></li><li data-type='method'><a href="CommonServices.html#.transformOption">transformOption</a></li></ul></li><li><a href="CommonValidations.html">CommonValidations</a><ul class='methods'><li data-type='method'><a href="CommonValidations.html#.validateBuildDir">validateBuildDir</a></li><li data-type='method'><a href="CommonValidations.html#.validateRootDir">validateRootDir</a></li></ul></li><li><a href="NewCommand.html">NewCommand</a><ul class='methods'><li data-type='method'><a href="NewCommand.html#clone">clone</a></li><li data-type='method'><a href="NewCommand.html#execute">execute</a></li><li data-type='method'><a href="NewCommand.html#guidance">guidance</a></li><li data-type='method'><a href="NewCommand.html#install">install</a></li><li data-type='method'><a href="NewCommand.html#querying">querying</a></li><li data-type='method'><a href="NewCommand.html#writeJSONPackage">writeJSONPackage</a></li></ul></li><li><a href="ReloadCommand.html">ReloadCommand</a><ul class='methods'><li data-type='method'><a href="ReloadCommand.html#execute">execute</a></li></ul></li><li><a href="ServeCommand.html">ServeCommand</a><ul class='methods'><li data-type='method'><a href="ServeCommand.html#execute">execute</a></li></ul></li><li><a href="StartCommand.html">StartCommand</a><ul class='methods'><li data-type='method'><a href="StartCommand.html#execute">execute</a></li><li data-type='method'><a href="StartCommand.html#startPM2">startPM2</a></li><li data-type='method'><a href="StartCommand.html#streamLogs">streamLogs</a></li></ul></li><li><a href="StatusCommand.html">StatusCommand</a><ul class='methods'><li data-type='method'><a href="StatusCommand.html#execute">execute</a></li></ul></li><li><a href="StopCommand.html">StopCommand</a><ul class='methods'><li data-type='method'><a href="StopCommand.html#execute">execute</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#conf">conf</a></li><li><a href="global.html#constants">constants</a></li><li><a href="global.html#pkg">pkg</a></li><li><a href="global.html#requireF">requireF</a></li><li><a href="global.html#rootPath">rootPath</a></li><li><a href="global.html#throwError">throwError</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">services/ColorizeText.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import chalk from 'chalk';
+
+/**
+ * Provides static methods to colorize CLI text
+ *
+ * @export
+ * @class ColorizeText
+ */
+export default class ColorizeText {
+  /**
+   * Show yellow colorized CLI text
+   *
+   * @example
+   * ColorizeText.info('I am', 'an', 'info');
+   *
+   * // returns 'I am an info' in red color to show in Command Line Interface
+   *
+   * @function
+   * @name ColorizeText.info
+   * @param  {string[]} arguments The text strings to colorize
+   * @returns {string} Yellow CLI text
+   */
+  static info(...args: string[]) {
+    return chalk.yellow(...args);
+  }
+
+  /**
+   * Show magenta colorized CLI text
+   *
+   * @example
+   * ColorizeText.warn('I am', 'a', 'warn!');
+   *
+   * // returns 'I am a warn!' in magenta color to show in Command Line Interface
+   *
+   * @function
+   * @name ColorizeText.warn
+   * @param  {string[]} arguments The text strings to colorize
+   * @returns {string} Magenta CLI text
+   */
+  static warn(...args: string[]) {
+    return chalk.magenta(...args);
+  }
+
+  /**
+   * Show red colorized CLI text
+   *
+   * @example
+   * ColorizeText.danger('I am', 'dangerous!');
+   *
+   * // returns 'I am dangerous!' in red color to show in Command Line Interface
+   *
+   * @function
+   * @name ColorizeText.danger
+   * @param  {string[]} arguments The text strings to colorize
+   * @returns {string} Red CLI text
+   */
+  static danger(...args: string[]) {
+    return chalk.red(...args);
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Dec 20 2016 21:20:52 GMT+0700 (WIB) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

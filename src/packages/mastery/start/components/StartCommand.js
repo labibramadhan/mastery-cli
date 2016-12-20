@@ -16,24 +16,32 @@ const {
   getServerName,
 } = requireF('services/CommonServices');
 
+/**
+ * The main class that handles the 'start' command execution.
+ *
+ * @export
+ * @class StartCommand
+ */
 export default class StartCommand {
   MK_STARTING = 'Starting up %s server..';
   MK_MONITORING_TIPS = 'Run mastery status command to open process monitor';
 
-  execute() {
-    validateBuildDir();
-
-    const serverName = getServerName();
-
-    console.log(ColorizeText.info(util.format(this.MK_STARTING, serverName)));
-    console.log('');
-
+  /**
+   * Run 'pm2 start' command that uses the MasteryJS run file (mastery.run.json).
+   */
+  startPM2() {
     execSync(`${constants.PM2_BIN} start ${constants.RUN_FILE}`, {
       stdio: 'ignore',
     });
+  }
 
+  /**
+   * Run 'pm2 logs {serverName}' command but pipe the stdio, if error happened then throw the error, otherwise detect if MasteryJS has been started to release/kill the spawned child process.
+   * @see CommonServices.getServerName
+   */
+  streamLogs() {
     const logsSpawn = spawn(constants.PM2_BIN, [
-      'logs', serverName,
+      'logs', this.serverName,
       '--lines', 0,
       '--raw',
     ], {
@@ -42,7 +50,7 @@ export default class StartCommand {
 
     logsSpawn.stderr.on('data', (data) => {
       const dataStr = data.toString('utf8');
-      console.error(dataStr);
+      throwError(dataStr);
     });
 
     logsSpawn.stdout.on('data', (data) => {
@@ -55,5 +63,17 @@ export default class StartCommand {
         console.log('');
       }
     });
+  }
+
+  /**
+   * The main method to call another methods sequentially, including decorations output.
+   */
+  execute() {
+    validateBuildDir();
+
+    this.serverName = getServerName();
+
+    console.log(ColorizeText.info(util.format(this.MK_STARTING, this.serverName)));
+    console.log('');
   }
 }

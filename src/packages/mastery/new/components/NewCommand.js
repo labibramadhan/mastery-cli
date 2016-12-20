@@ -16,12 +16,15 @@ const {
   getTargetPackage,
 } = requireF('services/CommonServices');
 
-
 /**
- * The main class of 'new' command execution
+ * The main class that handles the 'new' command execution.
  *
  * @export
  * @class NewCommand
+ * @property {string} MK_INTRO The translation key of 'intro' phase message
+ * @property {string} MK_CLONING The translation key of 'cloning' phase message
+ * @property {string} MK_INSTALLING The translation key of 'installing' phase message
+ * @property {string} CK_REPO The configuration hierarchical key to retrieve from nconf
  */
 export default class NewCommand {
   MK_INTRO = 'Creating a new MasteryJS project..';
@@ -30,12 +33,11 @@ export default class NewCommand {
   CK_REPO = 'mastery:repoUrl';
 
   /**
-   * Give user some questions to fill some package.json keys
+   * Give user some questions to fill some package.json keys.
    *
-   * @returns {Object[]} User answers, with question key as its key and answer as its value
-   * @memberof NewCommand
+   * @returns {Promise.<Object[]>} User answers, with question key as its key and answer as its value
    */
-  querying = async () => {
+  async querying() {
     this.questions = [{
       name: 'name',
       message: 'Project name:',
@@ -62,11 +64,11 @@ export default class NewCommand {
   }
 
   /**
-   * Clone latest project version from MasteryJS github repo
+   * Clone latest project version from MasteryJS github repo.
    *
-   * @memberof NewCommand
+   * @returns {Promise}
    */
-  clone = async () => {
+  async clone() {
     const git = simpleGit();
     const repoUrl = conf.get(this.CK_REPO);
 
@@ -74,20 +76,15 @@ export default class NewCommand {
   }
 
   /**
-   * Install npm packages for both dev and production dependencies
-   *
-   * @memberof NewCommand
+   * Install npm packages for both dev and production dependencies.
    */
-  install = () => {
+  install() {
     execSync('npm install', {
       stdio: 'inherit',
     });
   }
-
   /**
-   * Write a new package.json file merged with user answers before
-   *
-   * @memberof NewCommand
+   * Write a new package.json file merged with user answers before.
    */
   writeJSONPackage() {
     const questionKeys = _.map(this.questions, 'name');
@@ -98,7 +95,7 @@ export default class NewCommand {
       _.unset(targetPackage, key); // delete keys that exists in question
     });
 
-    // merge anwer values with default package.json from repo
+    // merge answer values with default package.json from repo
     const newPackage = _.merge(_.clone(answerValues), targetPackage);
 
     fs.writeFileSync(
@@ -108,9 +105,7 @@ export default class NewCommand {
   }
 
   /**
-   * Delete unnecessary files after cloning
-   *
-   * @memberof NewCommand
+   * Delete unnecessary files after cloning.
    */
   cleanFiles = () => {
     del.sync([
@@ -121,9 +116,7 @@ export default class NewCommand {
   }
 
   /**
-   * Show some guidance text to help user deciding what to do next
-   *
-   * @memberof NewCommand
+   * Show some guidance text to help user deciding what to do next.
    */
   guidance() {
     console.log(ColorizeText.info(
@@ -160,11 +153,12 @@ export default class NewCommand {
   }
 
   /**
-   * The main method to call another methods sequentially
+   * The main method to call another methods sequentially, including decorations output.
    *
-   * @memberof NewCommand
+   * @param {string} destDir A relative destination directory path
+   * @returns {Promise}
    */
-  execute = async (destDir: string) => {
+  async execute(destDir: string) {
     this.destDir = destDir;
     this.resolvedDestination = path.resolve(path.join(destDir));
 
