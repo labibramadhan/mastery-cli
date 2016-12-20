@@ -72,7 +72,7 @@ export default class BuildCommand {
   }
 
   /**
-   * Copy javascript files -> transform using babel -> uglify -> write sourcemaps.
+   * Copy javascript files -> transform using babel -> babili.
    *
    * @returns {Promise}
    */
