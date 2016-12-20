@@ -20,7 +20,7 @@ export default class CommonValidations {
    * process.chdir('build');
    * validateRootDir();
    *
-   * @param  {string='.'} basePath
+   * @param  {string} basePath
    */
   static validateRootDir(basePath:string = '.') {
     const resolvedBasePath = path.resolve(basePath);
@@ -55,7 +55,7 @@ export default class CommonValidations {
    * process.chdir('/Users/labibramadhan/Desktop');
    * validateBuildDir();
    *
-   * @param  {string='.'} basePath
+   * @param  {string} basePath
    */
   static validateBuildDir(basePath:string = '.') {
     const resolvedBasePath = path.resolve(basePath);

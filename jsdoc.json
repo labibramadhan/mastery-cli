@@ -1,0 +1,15 @@
+{
+  "source": {
+    "include": "./src",
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "opts": {
+    "template": "node_modules/docdash",
+    "encoding": "utf8",
+    "destination": "docs/",
+    "recurse": true,
+    "verbose": true
+  },
+  "plugins": ["node_modules/jsdoc-babel"]
+}
