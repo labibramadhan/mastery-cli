@@ -11,6 +11,11 @@ Command line utility to get started easily on [MasteryJS](https://github.com/lab
 
 ## Main Features
 
+- [x] Build system for MasteryJS
+- [x] PM2 configuration using mastery.run.json file, see [PM2 Process File](http://pm2.keymetrics.io/docs/usage/application-declaration/)
+- [x] Server management including start, stop, and reloading MasteryJS production ready package
+- [x] Monitor MasteryJS processes using [PM2 Monitoring](http://pm2.keymetrics.io/docs/usage/monitoring/)
+
 ## Getting Started
 
 ### Prerequisites
@@ -21,7 +26,6 @@ Command line utility to get started easily on [MasteryJS](https://github.com/lab
 ### Installation
 
 #### Windows
-
 
 Open Command Prompt that you will probably need to run as Administrator. And then, type
 ```
