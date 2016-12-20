@@ -30,6 +30,7 @@ export default class ReloadCommand {
     const serverName = getServerName();
 
     console.log(ColorizeText.info(util.format(this.MK_RELOADING, serverName)));
+    console.log('');
 
     const stopCommand = new StopCommand();
     stopCommand.execute();

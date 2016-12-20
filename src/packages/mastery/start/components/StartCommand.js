@@ -73,6 +73,10 @@ export default class StartCommand {
 
     this.serverName = getServerName();
 
+    this.startPM2();
+
+    this.streamLogs();
+
     console.log(ColorizeText.info(util.format(this.MK_STARTING, this.serverName)));
     console.log('');
   }
