@@ -7,8 +7,6 @@ import fs from 'fs';
 import gulp from 'gulp';
 import gulpBabel from 'gulp-babel';
 import gulpCopy from 'gulp-copy';
-import gulpSourceMaps from 'gulp-sourcemaps';
-import gulpUglify from 'gulp-uglify';
 import path from 'path';
 import util from 'util';
 
@@ -84,21 +82,21 @@ export default class BuildCommand {
     await new Promise((resolve) => {
       gulp
         .src(jsGlobs)
-        .pipe(gulpSourceMaps.init())
         .pipe(gulpBabel({
           presets: [
+            'babili',
             'es2015-node6',
-            'stage-0',
+            'stage-3',
           ],
           plugins: [
             'add-module-exports',
             'transform-runtime',
             'transform-decorators-legacy',
+            'transform-class-properties',
+            'transform-es2015-classes',
             'transform-flow-strip-types',
           ],
         }))
-        .pipe(gulpUglify())
-        .pipe(gulpSourceMaps.write())
         .pipe(gulp.dest(self.targetDir))
         .on('end', resolve);
     });
