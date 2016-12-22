@@ -15,7 +15,7 @@ Command line utility to get started easily on [MasteryJS](https://github.com/lab
     1. [Installation](#installation)
 1. [Commands](#commands)
     1. [Server Management](#server-management)
-    1. [CLI Configuration](#cli-configuration)
+    1. [CLI Management](#cli-management)
 
 ## Main Features
 
