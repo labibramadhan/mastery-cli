@@ -29,9 +29,9 @@ const {
  * @property {Object[]} QUESTIONS Inquirer questions objects
  */
 export default class NewCommand {
-  MK_INTRO = 'new.intro';
-  MK_CLONING = 'new.cloning'
-  MK_INSTALLING = 'new.installing';
+  MK_INTRO = 'mastery.new.intro';
+  MK_CLONING = 'mastery.new.cloning'
+  MK_INSTALLING = 'mastery.new.installing';
   CK_REPO = 'repoUrl';
   DELETE_FILES = [
     '.git',
@@ -47,24 +47,24 @@ export default class NewCommand {
   async querying() {
     this.questions = [{
       name: 'name',
-      message: i18n.t('questions.project.name'),
+      message: i18n.t('mastery.questions.project.name'),
       default: _.kebabCase(path.basename(this.resolvedDestination)),
     }, {
       name: 'version',
-      message: i18n.t('questions.project.version'),
+      message: i18n.t('mastery.questions.project.version'),
       default: '0.1.0',
     }, {
       name: 'license',
-      message: i18n.t('questions.project.license'),
+      message: i18n.t('mastery.questions.project.license'),
     }, {
       name: 'author',
-      message: i18n.t('questions.project.author'),
+      message: i18n.t('mastery.questions.project.author'),
     }, {
       name: 'email',
-      message: i18n.t('questions.project.email'),
+      message: i18n.t('mastery.questions.project.email'),
     }, {
       name: 'url',
-      message: i18n.t('questions.project.url'),
+      message: i18n.t('mastery.questions.project.url'),
     }];
     return await inquirer.prompt(this.questions);
   }

@@ -12,7 +12,7 @@ const ColorizeText = requireF('services/ColorizeText');
  * @property {string} MK_INTRO The translation key of 'initializing' phase message
  */
 export default class StatusCommand {
-  MK_INTRO = 'status.intro';
+  MK_INTRO = 'mastery.status.intro';
 
   /**
    * The main method that calls 'pm2 monit' with inherited stdio and then show all pm2 processes and live monitoring them.

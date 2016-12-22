@@ -60,12 +60,12 @@ export default class BuildCommand {
       'transform-flow-strip-types',
     ],
   }
-  MK_INTRO = 'build.intro';
-  MK_BUILD_SUCCESS = 'build.success';
-  MK_CLEANING = 'build.cleaning';
-  MK_COPYING_NON_JS = 'build.copying.nonJS';
-  MK_COPYING_JS = 'build.copying.JS';
-  MK_WRITING_RUN_CONF = 'build.writing.conf';
+  MK_INTRO = 'mastery.build.intro';
+  MK_BUILD_SUCCESS = 'mastery.build.success';
+  MK_CLEANING = 'mastery.build.cleaning';
+  MK_COPYING_NON_JS = 'mastery.build.copying.nonJS';
+  MK_COPYING_JS = 'mastery.build.copying.JS';
+  MK_WRITING_RUN_CONF = 'mastery.build.writing.conf';
 
   /**
    * Copy none javascript files such as json configuration files, etc.

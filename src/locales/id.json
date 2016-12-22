@@ -1,27 +1,30 @@
 {
-  "build.intro": "Building %{serverName} server..",
-  "build.success": "Build server %{serverName} telah berhasil",
-  "build.cleaning": "Menghapus direktori build..",
-  "build.copying.nonJS": "Duplikasi berkas non javascript..",
-  "build.copying.JS": "Duplikasi berkas javascript..",
-  "build.writing.conf": "Membuat file konfigurasi..",
+  "cli.conf.success": "Konfigurasi untuk kunci %{key} berhasil diubah",
+  "cli.conf.notExist": "Konfigurasi untuk kunci %{key} tidak ada",
 
-  "new.intro": "Membuat project MasteryJS baru..",
-  "new.cloning": "Cloning package MasteryJS terbaru..",
-  "new.installing": "Instalasi project Anda..",
+  "mastery.build.intro": "Building %{serverName} server..",
+  "mastery.build.success": "Build server %{serverName} telah berhasil",
+  "mastery.build.cleaning": "Menghapus direktori build..",
+  "mastery.build.copying.nonJS": "Duplikasi berkas non javascript..",
+  "mastery.build.copying.JS": "Duplikasi berkas javascript..",
+  "mastery.build.writing.conf": "Membuat file konfigurasi..",
 
-  "status.intro": "Membuka proses monitor..",
+  "mastery.new.intro": "Membuat project MasteryJS baru..",
+  "mastery.new.cloning": "Cloning package MasteryJS terbaru..",
+  "mastery.new.installing": "Instalasi project Anda..",
 
-  "restart.intro": "Menyalakan ulang server %{serverName}..",
+  "mastery.status.intro": "Membuka proses monitor..",
 
-  "start.intro": "Menyalakan server %{serverName}..",
-  "start.tips": "Ketik perintah mastery status untuk membuka proses monitor",
+  "mastery.restart.intro": "Menyalakan ulang server %{serverName}..",
 
-  "stop.intro": "Memberhentikan server %{serverName}..",
-  "stop.success": "Server %{serverName} telah berhenti",
+  "mastery.start.intro": "Menyalakan server %{serverName}..",
+  "mastery.start.tips": "Ketik perintah mastery status untuk membuka proses monitor",
 
-  "questions.project.name": "Nama project:",
-  "questions.project.version": "Versi awal project:",
-  "questions.project.license": "Lisensi:",
-  "questions.project.author": "Pembuat:"
+  "mastery.stop.intro": "Memberhentikan server %{serverName}..",
+  "mastery.stop.success": "Server %{serverName} telah berhenti",
+
+  "mastery.questions.project.name": "Nama project:",
+  "mastery.questions.project.version": "Versi awal project:",
+  "mastery.questions.project.license": "Lisensi:",
+  "mastery.questions.project.author": "Pembuat:"
 }

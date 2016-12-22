@@ -19,8 +19,8 @@ const {
  * @property {string} MK_STOP_SUCCESS The translation key of 'server stopped' phase message
  */
 export default class StopCommand {
-  MK_INTRO = 'stop.intro';
-  MK_STOP_SUCCESS = 'stop.success';
+  MK_INTRO = 'mastery.stop.intro';
+  MK_STOP_SUCCESS = 'mastery.stop.success';
 
   /**
    * The main method to exec 'pm2 stop {serverName}' command with inherited stdio, also output some text as decoration.

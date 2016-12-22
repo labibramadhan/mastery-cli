@@ -17,7 +17,7 @@ const StartCommand = requireF('packages/mastery/start/components/StartCommand');
  * @property {string} MK_INTRO The translation key of 'initializing' phase message
  */
 export default class RestartCommand {
-  MK_INTRO = 'restart.intro';
+  MK_INTRO = 'mastery.restart.intro';
 
   /**
    * The main method to call 'stop' command and then call 'start' command by using their respective classes.

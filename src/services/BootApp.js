@@ -20,7 +20,9 @@ export default class BootApp {
    * Get all json files content under (src|build)/config directory and set them as nconf default configurations
    */
   bootConf() {
-    conf.defaults(require(path.join(rootPath, 'config.json')));
+    conf.file({
+      file: path.join(rootPath, 'config.json'),
+    });
   }
 
   /**

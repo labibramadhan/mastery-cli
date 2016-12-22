@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>services/CommonValidations.js - Documentation</title>
+    <title>packages/cli/conf/components/ConfCommand.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">services/CommonValidations.js</h1>
+    <h1 class="page-title">packages/cli/conf/components/ConfCommand.js</h1>
     
 
     
@@ -41,72 +41,39 @@
 import fs from 'fs';
 import path from 'path';
 
+const ColorizeText = requireF('services/ColorizeText');
+
 /**
- * Provides common validations static methods
+ * The main class that handles the 'conf' command execution.
  *
  * @export
- * @class CommonValidations
- * @property {string} MK_BUILD_DIR_INVALID The translation key of message to show when current directory is not a MasteryJS build directory
- * @property {string} MK_ROOT_DIR_INVALID The translation key of message to show when current directory is not a MasteryJS root directory
+ * @class ConfCommand
+ * @property {string} MK_CONF_SUCCESS The translation key of 'writing configuration success' phase message
+ * @property {string} MK_CONF_NOT_EXIST The translation key of 'key does not exist' phase message
  */
-export default class CommonValidations {
-  static MK_BUILD_DIR_INVALID = 'Current directory is not a MasteryJS build directory';
-  static MK_ROOT_DIR_INVALID = 'Current directory is not a MasteryJS root project directory';
+export default class ConfCommand {
+  MK_CONF_SUCCESS = 'cli.conf.success';
+  MK_CONF_NOT_EXIST = 'cli.conf.notExist';
 
   /**
-   * Throw an error if directory isn't a root directory, a directory that contains a package.json file &amp; others (see files variables below)
-   *
-   * @example
-   * // Returns a thrown error
-   * process.chdir('build');
-   * validateRootDir();
-   *
-   * @function
-   * @name CommonValidations.validateRootDir
-   * @param  {string} [basePath=.] The relative path to check
+   * The main method that handles configuration changes and then save the results back to the configuration file.
    */
-  static validateRootDir(basePath:string = '.') {
-    const resolvedBasePath = path.resolve(basePath);
-    const files = [{
-      path: 'src/core/services/CommonServices.js',
-      type: 'file',
-    }, {
-      path: 'src/core/services/BootServer.js',
-      type: 'file',
-    }, {
-      path: 'src/core/services/I18nWrapper.js',
-      type: 'file',
-    }, {
-      path: 'package.json',
-      type: 'file',
-    }];
+  execute(key: string, value: string) {
+    if (key) {
+      if (_.isUndefined(conf.get(key))) {
+        throwError(i18n.t(this.MK_CONF_NOT_EXIST, {
+          key,
+        }));
+      } else {
+        conf.set(key, value);
+        fs.writeFileSync(path.join(rootPath, 'config.json'), JSON.stringify(conf.get(), null, 2));
 
-    _.forEach(files, (file) => {
-      const method = `is${_.capitalize(file.type)}`;
-      const filePath = path.join(resolvedBasePath, file.path);
-      if (!fs.existsSync(filePath) || !fs.lstatSync(filePath)[method]()) {
-        throwError(CommonValidations.MK_ROOT_DIR_INVALID);
+        console.log(ColorizeText.info(i18n.t(this.MK_CONF_SUCCESS, {
+          key,
+          value,
+        })));
+        console.log('');
       }
-    });
-  }
-
-  /**
-   * Throw an error if directory isn't a MasteryJS build directory, a directory that contains a mastery.run.json file
-   *
-   * @example
-   * // Returns a thrown error
-   * process.chdir('/Users/labibramadhan/Desktop');
-   * validateBuildDir();
-   *
-   * @function
-   * @name CommonValidations.validateBuildDir
-   * @param  {string} [basePath=.] The relative path to check
-   */
-  static validateBuildDir(basePath:string = '.') {
-    const resolvedBasePath = path.resolve(basePath);
-    const runConfPath = path.join(resolvedBasePath, constants.RUN_FILE);
-    if (!fs.existsSync(runConfPath) || !fs.lstatSync(runConfPath).isFile()) {
-      throwError(CommonValidations.MK_BUILD_DIR_INVALID);
     }
   }
 }

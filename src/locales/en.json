@@ -1,29 +1,32 @@
 {
-  "build.intro": "Building %{serverName} server..",
-  "build.success": "%{serverName} server build success",
-  "build.cleaning": "Deleting build directory..",
-  "build.copying.nonJS": "Copying non javascript files..",
-  "build.copying.JS": "Copying javascript files..",
-  "build.writing.conf": "Writing run configuration..",
+  "cli.conf.success": "Configuration of %{key} successfully changed",
+  "cli.conf.notExist": "Configuration of %{key} doesn't exist",
 
-  "new.intro": "Creating a new MasteryJS project..",
-  "new.cloning": "Cloning latest MasteryJS package..",
-  "new.installing": "Installing your project..",
+  "mastery.build.intro": "Building %{serverName} server..",
+  "mastery.build.success": "%{serverName} server build success",
+  "mastery.build.cleaning": "Deleting build directory..",
+  "mastery.build.copying.nonJS": "Copying non javascript files..",
+  "mastery.build.copying.JS": "Copying javascript files..",
+  "mastery.build.writing.conf": "Writing run configuration..",
 
-  "status.intro": "Opening process monitor..",
+  "mastery.new.intro": "Creating a new MasteryJS project..",
+  "mastery.new.cloning": "Cloning latest MasteryJS package..",
+  "mastery.new.installing": "Installing your project..",
 
-  "restart.intro": "Restarting %{serverName} server..",
+  "mastery.status.intro": "Opening process monitor..",
 
-  "start.intro": "Starting %{serverName} server..",
-  "start.tips": "Run mastery status command to open process monitor",
+  "mastery.restart.intro": "Restarting %{serverName} server..",
 
-  "stop.intro": "Stopping %{serverName} server..",
-  "stop.success": "%{serverName} server stopped",
+  "mastery.start.intro": "Starting %{serverName} server..",
+  "mastery.start.tips": "Run mastery status command to open process monitor",
 
-  "questions.project.name": "Project name:",
-  "questions.project.version": "Your project starting version number:",
-  "questions.project.license": "License:",
-  "questions.project.author": "Author:",
-  "questions.project.email": "Email:",
-  "questions.project.url": "Url:"
+  "mastery.stop.intro": "Stopping %{serverName} server..",
+  "mastery.stop.success": "%{serverName} server stopped",
+
+  "mastery.questions.project.name": "Project name:",
+  "mastery.questions.project.version": "Your project starting version number:",
+  "mastery.questions.project.license": "License:",
+  "mastery.questions.project.author": "Author:",
+  "mastery.questions.project.email": "Email:",
+  "mastery.questions.project.url": "Url:"
 }

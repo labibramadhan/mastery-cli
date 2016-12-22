@@ -24,8 +24,8 @@ const {
  * @property {string} MK_MONITORING_TIPS The tranlation key of 'tips after server started' phase message
  */
 export default class StartCommand {
-  MK_INTRO = 'start.intro';
-  MK_MONITORING_TIPS = 'start.tips';
+  MK_INTRO = 'mastery.start.intro';
+  MK_MONITORING_TIPS = 'mastery.start.tips';
 
   /**
    * Run 'pm2 start' command that uses the MasteryJS run file (mastery.run.json).
