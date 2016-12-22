@@ -73,9 +73,9 @@ Usage:
 ```
 mastery serve -i|--inspect -p|--port <n>
 ```
-- **-i**|**--inspect** enable Chrome Developer Tools Inspector. This argument is optional.
+- **-i, --inspect** enable Chrome Developer Tools Inspector. This argument is optional.
 
-- **-p|--port \<n>** enable --debug-brk feature, to debug using any supported IDE. Fill **\<n>** with a port number.
+- **-p, --port \<n>** enable --debug-brk feature, to debug using any supported IDE. Fill **\<n>** with a port number.
 
 #### Build
 Build a MasteryJS project, this will transform MasteryJS source codes into ES2015 minified codes using babel + uglify.
