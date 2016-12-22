@@ -1,0 +1,27 @@
+{
+  "build.intro": "Building %{serverName} server..",
+  "build.success": "Build server %{serverName} telah berhasil",
+  "build.cleaning": "Menghapus direktori build..",
+  "build.copying.nonJS": "Duplikasi berkas non javascript..",
+  "build.copying.JS": "Duplikasi berkas javascript..",
+  "build.writing.conf": "Membuat file konfigurasi..",
+
+  "new.intro": "Membuat project MasteryJS baru..",
+  "new.cloning": "Cloning package MasteryJS terbaru..",
+  "new.installing": "Instalasi project Anda..",
+
+  "status.intro": "Membuka proses monitor..",
+
+  "restart.intro": "Menyalakan ulang server %{serverName}..",
+
+  "start.intro": "Menyalakan server %{serverName}..",
+  "start.tips": "Ketik perintah mastery status untuk membuka proses monitor",
+
+  "stop.intro": "Memberhentikan server %{serverName}..",
+  "stop.success": "Server %{serverName} telah berhenti",
+
+  "questions.project.name": "Nama project:",
+  "questions.project.version": "Versi awal project:",
+  "questions.project.license": "Lisensi:",
+  "questions.project.author": "Pembuat:"
+}

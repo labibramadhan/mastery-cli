@@ -1,0 +1,29 @@
+{
+  "build.intro": "Building %{serverName} server..",
+  "build.success": "%{serverName} server build success",
+  "build.cleaning": "Deleting build directory..",
+  "build.copying.nonJS": "Copying non javascript files..",
+  "build.copying.JS": "Copying javascript files..",
+  "build.writing.conf": "Writing run configuration..",
+
+  "new.intro": "Creating a new MasteryJS project..",
+  "new.cloning": "Cloning latest MasteryJS package..",
+  "new.installing": "Installing your project..",
+
+  "status.intro": "Opening process monitor..",
+
+  "restart.intro": "Restarting %{serverName} server..",
+
+  "start.intro": "Starting %{serverName} server..",
+  "start.tips": "Run mastery status command to open process monitor",
+
+  "stop.intro": "Stopping %{serverName} server..",
+  "stop.success": "%{serverName} server stopped",
+
+  "questions.project.name": "Project name:",
+  "questions.project.version": "Your project starting version number:",
+  "questions.project.license": "License:",
+  "questions.project.author": "Author:",
+  "questions.project.email": "Email:",
+  "questions.project.url": "Url:"
+}

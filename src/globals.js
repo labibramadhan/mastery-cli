@@ -34,23 +34,33 @@ global.pkg = require(path.join(rootPath, '../package.json'));
  */
 global.conf = nconf;
 
+const I18nWrapper = requireF('services/I18nWrapper');
+/**
+ * An instance of I18nWrapper (extended Polyglot class)
+ *
+ * @global
+ * @type {I18nWrapper}
+ */
+global.i18n = new I18nWrapper();
+
+const ColorizeText = requireF('services/ColorizeText');
 /**
  * Show a danger colorized text from ColorizeText.danger and then exit the process with a number code
  *
  * @function throwError
  * @see ColorizeText.danger
  */
-const ColorizeText = requireF('services/ColorizeText');
 global.throwError = (errString: string, code: number = 1) => {
   console.error(ColorizeText.danger(errString));
   console.log('');
   process.exit(code);
 };
 
+const constants = requireF('constants');
 /**
  * Sets all constants exported variable from root/constants.js as global variable
  *
+ * @global
  * @type {Object}
  */
-const constants = requireF('constants');
 global.constants = constants;

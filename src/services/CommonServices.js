@@ -16,7 +16,7 @@ export default class CommonServices {
    * @example
    * requireF('../package.json');
    *
-   * // returns a package.json file content
+   * // returns package.json file content
    *
    * @function
    * @name CommonServices.requireF
@@ -57,7 +57,7 @@ export default class CommonServices {
    * @example
    * requireAll(path.resolve(path.join(rootPath, '../package.json')));
    *
-   * // returns a package.json file content
+   * // returns package.json file content
    *
    * @function
    * @name CommonServices.requireAll
@@ -84,7 +84,7 @@ export default class CommonServices {
    * process.chdir('build');
    * getTargetPackage();
    *
-   * // returns a package.json file content from 'build' directory
+   * // returns package.json file content from 'build' directory
    *
    * @function
    * @name CommonServices.getTargetPackage
@@ -112,7 +112,7 @@ export default class CommonServices {
    * process.chdir('build');
    * getTargetRunConf();
    *
-   * // returns a mastery.run.json file content from 'build' directory if exists
+   * // returns mastery.run.json file content from 'build' directory if exists
    *
    * @function
    * @name CommonServices.getTargetRunConf
@@ -124,6 +124,35 @@ export default class CommonServices {
     const runConfPath = path.join(resolvedTargetDir, constants.RUN_FILE);
     if (fs.existsSync(runConfPath)) {
       return require(runConfPath);
+    }
+    return false;
+  }
+
+  /**
+   * Return a mastery.run.json file content
+   *
+   * @example
+   * getTargetBabelRecipe();
+   *
+   * // returns .babelrc file content from 'root' directory if exists
+   *
+   * @function
+   * @name CommonServices.getTargetBabelRecipe
+   * @param  {string} [targetDir=.] Relative path of target directory to retrieve its mastery.run.json
+   * @returns {Object|Boolean} .babelrc file content or false
+   */
+  static getTargetBabelRecipe(targetDir: string = '.') {
+    const resolvedTargetDir = path.resolve(targetDir);
+    const recipePath = path.join(resolvedTargetDir, '.babelrc');
+    if (fs.existsSync(recipePath)) {
+      let recipe = {};
+      try {
+        const recipeContent = fs.readFileSync(recipePath);
+        recipe = JSON.parse(recipeContent.toString('utf8'));
+      } catch (e) {
+        //
+      }
+      return recipe;
     }
     return false;
   }

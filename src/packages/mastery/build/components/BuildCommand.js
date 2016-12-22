@@ -7,12 +7,13 @@ import fs from 'fs';
 import gulp from 'gulp';
 import gulpBabel from 'gulp-babel';
 import gulpCopy from 'gulp-copy';
+import gulpUglify from 'gulp-uglify';
 import path from 'path';
-import util from 'util';
 
 const ColorizeText = requireF('services/ColorizeText');
 const {
   getServerName,
+  getTargetBabelRecipe,
 } = requireF('services/CommonServices');
 const {
   validateRootDir,
@@ -23,17 +24,19 @@ const {
  *
  * @export
  * @class BuildCommand
+ * @property {string} BUILD_DIR Build directory relative path
  * @property {string} JS_GLOB A glob pattern where javascript files are
+ * @property {Object} BABEL_RECIPES Babel configuration for transforming es6 MasteryJS source codes
  * @property {string[]} COPY_GLOB Glob patterns where non javascript files are
- * @property {string} TARGET_DIR The build directory relative path from root project directory
- * @property {string} MK_BUILDING The translation key of 'building' phase message
- * @property {string} MK_BUILT The translation key of 'built' phase message
- * @property {string} MK_DELETING The translation key of 'deleting' phase message
+ * @property {string} MK_INTRO The translation key of 'initializing' phase message
+ * @property {string} MK_BUILD_SUCCESS The translation key of 'build success' phase message
+ * @property {string} MK_CLEANING The translation key of 'cleaning' phase message
  * @property {string} MK_COPYING_NON_JS The translation key of 'copying non javascript files' phase message
  * @property {string} MK_COPYING_JS The translation key of 'copying javascript files' phase message
  * @property {string} MK_WRITING_RUN_CONF The translation key of 'writing mastery.run.js file' phase message
  */
 export default class BuildCommand {
+  BUILD_DIR = 'build';
   JS_GLOB = 'src/**/*.js';
   COPY_GLOB = [
     'src/config/**/*.json',
@@ -43,13 +46,26 @@ export default class BuildCommand {
     'src/core/locales/**/*.json',
     'src/main/locales/**/*.json',
   ]
-  TARGET_DIR = 'build';
-  MK_BUILDING = 'Building %s server..';
-  MK_BUILT = '%s server build success';
-  MK_DELETING = 'Deleting build directory..';
-  MK_COPYING_NON_JS = 'Copying non javascript files..';
-  MK_COPYING_JS = 'Copying javascript files..';
-  MK_WRITING_RUN_CONF = 'Writing run configuration..';
+  BABEL_RECIPES = {
+    presets: [
+      'es2015',
+      'stage-3',
+    ],
+    plugins: [
+      'add-module-exports',
+      'transform-runtime',
+      'transform-decorators-legacy',
+      'transform-class-properties',
+      'transform-es2015-classes',
+      'transform-flow-strip-types',
+    ],
+  }
+  MK_INTRO = 'build.intro';
+  MK_BUILD_SUCCESS = 'build.success';
+  MK_CLEANING = 'build.cleaning';
+  MK_COPYING_NON_JS = 'build.copying.nonJS';
+  MK_COPYING_JS = 'build.copying.JS';
+  MK_WRITING_RUN_CONF = 'build.writing.conf';
 
   /**
    * Copy none javascript files such as json configuration files, etc.
@@ -82,21 +98,8 @@ export default class BuildCommand {
     await new Promise((resolve) => {
       gulp
         .src(jsGlobs)
-        .pipe(gulpBabel({
-          presets: [
-            'babili',
-            'es2015-node6',
-            'stage-3',
-          ],
-          plugins: [
-            'add-module-exports',
-            'transform-runtime',
-            'transform-decorators-legacy',
-            'transform-class-properties',
-            'transform-es2015-classes',
-            'transform-flow-strip-types',
-          ],
-        }))
+        .pipe(gulpBabel(getTargetBabelRecipe()))
+        .pipe(gulpUglify())
         .pipe(gulp.dest(self.targetDir))
         .on('end', resolve);
     });
@@ -106,7 +109,7 @@ export default class BuildCommand {
    * Write mastery.run.json file, append 'name' key value from project name question answered by user before.
    */
   writeRunConf() {
-    process.chdir('./build');
+    process.chdir(this.BUILD_DIR);
     const runConf = _.merge(constants.DEFAULT_RUN_CONF, {
       name: this.serverName,
     });
@@ -124,30 +127,33 @@ export default class BuildCommand {
     validateRootDir();
 
     this.basePath = path.resolve('.');
-    this.targetDir = path.join(this.basePath, this.TARGET_DIR);
+    this.targetDir = path.join(this.basePath, this.BUILD_DIR);
     this.serverName = getServerName(this.basePath);
 
-    console.log(ColorizeText.info(util.format(this.MK_BUILDING, this.serverName)));
+    console.log(ColorizeText.info(i18n.t(this.MK_INTRO, {
+      serverName: this.serverName,
+    })));
     console.log('');
 
-    const loading = new Spinner(ColorizeText.info(util.format(this.MK_BUILDING, this.serverName)));
+    const loading = new Spinner(ColorizeText.info(i18n.t(this.MK_CLEANING)));
     loading.setSpinnerString(constants.DEFAULT_SPINNER);
     loading.start();
 
-    loading.setSpinnerTitle(ColorizeText.info(this.MK_DELETING));
     del.sync(this.targetDir);
 
-    loading.setSpinnerTitle(ColorizeText.info(this.MK_COPYING_NON_JS));
+    loading.setSpinnerTitle(ColorizeText.info(i18n.t(this.MK_COPYING_NON_JS)));
     await this.copyNonJS();
 
-    loading.setSpinnerTitle(ColorizeText.info(this.MK_COPYING_JS));
+    loading.setSpinnerTitle(ColorizeText.info(i18n.t(this.MK_COPYING_JS)));
     await this.copyJS();
 
-    loading.setSpinnerTitle(ColorizeText.info(this.MK_WRITING_RUN_CONF));
+    loading.setSpinnerTitle(ColorizeText.info(i18n.t(this.MK_WRITING_RUN_CONF)));
     this.writeRunConf();
 
     loading.stop(true);
-    console.log(ColorizeText.info(util.format(this.MK_BUILT, this.serverName)));
+    console.log(ColorizeText.info(i18n.t(this.MK_BUILD_SUCCESS, {
+      serverName: this.serverName,
+    })));
     console.log('');
   }
 }

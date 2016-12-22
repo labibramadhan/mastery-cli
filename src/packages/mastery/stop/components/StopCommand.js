@@ -1,10 +1,6 @@
 import {
-  Spinner,
-} from 'cli-spinner';
-import {
   execSync,
 } from 'child_process';
-import util from 'util';
 
 const ColorizeText = requireF('services/ColorizeText');
 const {
@@ -19,12 +15,12 @@ const {
  *
  * @export
  * @class StopCommand
- * @property {string} MK_STOPPING The translation key of 'stopping' phase message
- * @property {string} MK_STOPPED The translation key of 'stopped' phase message
+ * @property {string} MK_INTRO The translation key of 'initializing' phase message
+ * @property {string} MK_STOP_SUCCESS The translation key of 'server stopped' phase message
  */
 export default class StopCommand {
-  MK_STOPPING = 'Stopping %s server..';
-  MK_STOPPED = 'Stopped %s server';
+  MK_INTRO = 'stop.intro';
+  MK_STOP_SUCCESS = 'stop.success';
 
   /**
    * The main method to exec 'pm2 stop {serverName}' command with inherited stdio, also output some text as decoration.
@@ -35,16 +31,19 @@ export default class StopCommand {
     validateBuildDir();
 
     const serverName = getServerName();
-    const loading = new Spinner(util.format(this.MK_STOPPING, serverName));
-    loading.start();
+    console.log(ColorizeText.info(i18n.t(this.MK_INTRO, {
+      serverName,
+    })));
+    console.log('');
 
     execSync(`pm2 stop ${serverName}`, {
       stdio: 'inherit',
     });
 
-    loading.stop();
     console.log('');
-    console.log(ColorizeText.info(util.format(this.MK_STOPPED, serverName)));
+    console.log(ColorizeText.info(i18n.t(this.MK_STOP_SUCCESS, {
+      serverName,
+    })));
     console.log('');
   }
 }

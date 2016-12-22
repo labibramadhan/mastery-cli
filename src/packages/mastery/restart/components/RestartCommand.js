@@ -1,5 +1,3 @@
-import util from 'util';
-
 const {
   getServerName,
 } = requireF('services/CommonServices');
@@ -12,14 +10,14 @@ const StopCommand = requireF('packages/mastery/stop/components/StopCommand');
 const StartCommand = requireF('packages/mastery/start/components/StartCommand');
 
 /**
- * The main class that handles the 'reload' command execution.
+ * The main class that handles the 'restart' command execution.
  *
  * @export
- * @class ReloadCommand
- * @property {string} MK_RELOADING The translation key of 'reloading' phase message
+ * @class RestartCommand
+ * @property {string} MK_INTRO The translation key of 'initializing' phase message
  */
-export default class ReloadCommand {
-  MK_RELOADING = 'Reloading %s server..';
+export default class RestartCommand {
+  MK_INTRO = 'restart.intro';
 
   /**
    * The main method to call 'stop' command and then call 'start' command by using their respective classes.
@@ -29,7 +27,9 @@ export default class ReloadCommand {
 
     const serverName = getServerName();
 
-    console.log(ColorizeText.info(util.format(this.MK_RELOADING, serverName)));
+    console.log(ColorizeText.info(i18n.t(this.MK_INTRO, {
+      serverName,
+    })));
     console.log('');
 
     const stopCommand = new StopCommand();

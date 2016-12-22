@@ -4,7 +4,6 @@ import {
 } from 'child_process';
 
 import chalk from 'chalk';
-import util from 'util';
 
 const ColorizeText = requireF('services/ColorizeText');
 
@@ -21,10 +20,12 @@ const {
  *
  * @export
  * @class StartCommand
+ * @property {string} MK_INTRO The translation key of 'initializing' phase message
+ * @property {string} MK_MONITORING_TIPS The tranlation key of 'tips after server started' phase message
  */
 export default class StartCommand {
-  MK_STARTING = 'Starting up %s server..';
-  MK_MONITORING_TIPS = 'Run mastery status command to open process monitor';
+  MK_INTRO = 'start.intro';
+  MK_MONITORING_TIPS = 'start.tips';
 
   /**
    * Run 'pm2 start' command that uses the MasteryJS run file (mastery.run.json).
@@ -59,7 +60,7 @@ export default class StartCommand {
       if (/running at/.test(dataStr)) {
         logsSpawn.kill();
 
-        console.log(ColorizeText.info(this.MK_MONITORING_TIPS));
+        console.log(ColorizeText.info(i18n.t(this.MK_MONITORING_TIPS)));
         console.log('');
       }
     });
@@ -77,7 +78,9 @@ export default class StartCommand {
 
     this.streamLogs();
 
-    console.log(ColorizeText.info(util.format(this.MK_STARTING, this.serverName)));
+    console.log(ColorizeText.info(i18n.t(this.MK_INTRO, {
+      serverName: this.serverName,
+    })));
     console.log('');
   }
 }

@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import chalk from 'chalk';
 import clear from 'clear';
 import figlet from 'figlet';
@@ -6,6 +5,7 @@ import path from 'path';
 import program from 'commander';
 
 const {
+  globSyncMultiple,
   requireAll,
 } = requireF('services/CommonServices');
 
@@ -20,13 +20,21 @@ export default class BootApp {
    * Get all json files content under (src|build)/config directory and set them as nconf default configurations
    */
   bootConf() {
-    const mergedConfigs = {};
-    const configs = requireAll(path.join(rootPath, 'config/**/*.json'));
-    _.forEach(configs, (config) => {
-      if (_.isObject(config)) _.merge(mergedConfigs, config);
-    });
+    conf.defaults(require(path.join(rootPath, 'config.json')));
+  }
 
-    conf.defaults(mergedConfigs);
+  /**
+   * Populate all locale json files content and put them into global.i18n Polyglot instance
+   */
+  bootLocales() {
+    const localeGlob = path.join(rootPath, 'locales/*.json');
+    const localeFiles = globSyncMultiple(localeGlob);
+    localeFiles.forEach((localePath) => {
+      const locale = path.basename(localePath).replace('.json', '');
+      i18n.extend({
+        [locale]: require(localePath),
+      });
+    });
   }
 
   /**
@@ -56,6 +64,8 @@ export default class BootApp {
     conf.use('memory');
 
     this.bootConf();
+
+    this.bootLocales();
 
     this.welcome();
 

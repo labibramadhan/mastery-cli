@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>services/ColorizeText.js - Documentation</title>
+    <title>services/I18nWrapper.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">services/ColorizeText.js</h1>
+    <h1 class="page-title">services/I18nWrapper.js</h1>
     
 
     
@@ -37,64 +37,63 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import chalk from 'chalk';
+            <pre class="prettyprint source linenums"><code>import Polyglot from 'node-polyglot';
 
 /**
- * Provides static methods to colorize CLI text
+ * A wrapper for MasteryCLI i18n feature
  *
  * @export
- * @class ColorizeText
+ * @class I18nWrapper
+ * @extends {Polyglot}
+ * @property {string} CK_LOCALE Configuration key to retrieve the locale code from config.json
  */
-export default class ColorizeText {
+export default class I18nWrapper extends Polyglot {
+  CK_LOCALE = 'locale';
+
   /**
-   * Show yellow colorized CLI text
+   * Retrieve current selected locale from global.conf
    *
-   * @example
-   * ColorizeText.info('I am', 'an', 'info');
-   *
-   * // returns 'I am an info' in red color to show in Command Line Interface
-   *
-   * @function
-   * @name ColorizeText.info
-   * @param  {string[]} arguments The text strings to colorize
-   * @returns {string} Yellow CLI text
+   * @param {string} lang
+   * @returns {string} The default locale
    */
-  static info(...args: string[]) {
-    return chalk.yellow(...args);
+  getLocale() {
+    return conf.get(this.CK_LOCALE);
   }
 
   /**
-   * Show magenta colorized CLI text
+   * Check if a translation key has its translated message
    *
-   * @example
-   * ColorizeText.warn('I am', 'a', 'warn!');
-   *
-   * // returns 'I am a warn!' in magenta color to show in Command Line Interface
-   *
-   * @function
-   * @name ColorizeText.warn
-   * @param  {string[]} arguments The text strings to colorize
-   * @returns {string} Magenta CLI text
+   * @param {string} key The translation key to check
+   * @param {string} lang Language code
+   * @returns {Boolean} Return true if translated message, otherwise return false
    */
-  static warn(...args: string[]) {
-    return chalk.magenta(...args);
+  has(key: string, lang: string) {
+    let locale;
+    if (lang) {
+      locale = lang;
+    } else {
+      locale = this.getLocale();
+    }
+    return super.has(`${locale}.${key}`);
   }
 
   /**
-   * Show red colorized CLI text
+   * Find the translation message based on translation key and current locale
    *
-   * @example
-   * ColorizeText.danger('I am', 'dangerous!');
-   *
-   * // returns 'I am dangerous!' in red color to show in Command Line Interface
-   *
-   * @function
-   * @name ColorizeText.danger
-   * @param  {string[]} arguments The text strings to colorize
-   * @returns {string} Red CLI text
+   * @param {string} key The translation key to translate
+   * @param {Object} [options={}] The translation variable values if the translated message does have any variable to replace
+   * @returns {string} The translated message if exists, otherwise return its key back
+   * @see {@link https://github.com/airbnb/polyglot.js#polyglotprototypetkey-interpolationoptions}
    */
-  static danger(...args: string[]) {
-    return chalk.red(...args);
+  t(key: string, options: Object = {}) {
+    if (!this.has(key)) {
+      if (this.has(key, 'en')) {
+        return super.t(`en.${key}`, options);
+      }
+      return key;
+    }
+    const locale = this.getLocale();
+    return super.t(`${locale}.${key}`, options);
   }
 }
 </code></pre>

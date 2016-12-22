@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>services/ColorizeText.js - Documentation</title>
+    <title>RestartCommand - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,79 +27,274 @@
 
 <div id="main">
     
-    <h1 class="page-title">services/ColorizeText.js</h1>
+    <h1 class="page-title">RestartCommand</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import chalk from 'chalk';
+        <h2>
+        RestartCommand
+        </h2>
+        
+    
+</header>
 
-/**
- * Provides static methods to colorize CLI text
- *
- * @export
- * @class ColorizeText
- */
-export default class ColorizeText {
-  /**
-   * Show yellow colorized CLI text
-   *
-   * @example
-   * ColorizeText.info('I am', 'an', 'info');
-   *
-   * // returns 'I am an info' in red color to show in Command Line Interface
-   *
-   * @function
-   * @name ColorizeText.info
-   * @param  {string[]} arguments The text strings to colorize
-   * @returns {string} Yellow CLI text
-   */
-  static info(...args: string[]) {
-    return chalk.yellow(...args);
-  }
+<article>
+    <div class="container-overview">
+    
+        
 
-  /**
-   * Show magenta colorized CLI text
-   *
-   * @example
-   * ColorizeText.warn('I am', 'a', 'warn!');
-   *
-   * // returns 'I am a warn!' in magenta color to show in Command Line Interface
-   *
-   * @function
-   * @name ColorizeText.warn
-   * @param  {string[]} arguments The text strings to colorize
-   * @returns {string} Magenta CLI text
-   */
-  static warn(...args: string[]) {
-    return chalk.magenta(...args);
-  }
+    
 
-  /**
-   * Show red colorized CLI text
-   *
-   * @example
-   * ColorizeText.danger('I am', 'dangerous!');
-   *
-   * // returns 'I am dangerous!' in red color to show in Command Line Interface
-   *
-   * @function
-   * @name ColorizeText.danger
-   * @param  {string[]} arguments The text strings to colorize
-   * @returns {string} Red CLI text
-   */
-  static danger(...args: string[]) {
-    return chalk.red(...args);
-  }
-}
-</code></pre>
-        </article>
-    </section>
+    <h4 class="name" id="RestartCommand"><span class="type-signature"></span>new RestartCommand<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="packages_mastery_restart_components_RestartCommand.js.html">packages/mastery/restart/components/RestartCommand.js</a>, <a href="packages_mastery_restart_components_RestartCommand.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>MK_INTRO</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The translation key of 'initializing' phase message</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description">
+    The main class that handles the 'restart' command execution.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="execute"><span class="type-signature"></span>execute<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="packages_mastery_restart_components_RestartCommand.js.html">packages/mastery/restart/components/RestartCommand.js</a>, <a href="packages_mastery_restart_components_RestartCommand.js.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    The main method to call 'stop' command and then call 'start' command by using their respective classes.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

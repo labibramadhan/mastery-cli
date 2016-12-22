@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>services/ColorizeText.js - Documentation</title>
+    <title>packages/mastery/restart/components/RestartCommand.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">services/ColorizeText.js</h1>
+    <h1 class="page-title">packages/mastery/restart/components/RestartCommand.js</h1>
     
 
     
@@ -37,64 +37,45 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import chalk from 'chalk';
+            <pre class="prettyprint source linenums"><code>const {
+  getServerName,
+} = requireF('services/CommonServices');
+const {
+  validateBuildDir,
+} = requireF('services/CommonValidations');
+
+const ColorizeText = requireF('services/ColorizeText');
+const StopCommand = requireF('packages/mastery/stop/components/StopCommand');
+const StartCommand = requireF('packages/mastery/start/components/StartCommand');
 
 /**
- * Provides static methods to colorize CLI text
+ * The main class that handles the 'restart' command execution.
  *
  * @export
- * @class ColorizeText
+ * @class RestartCommand
+ * @property {string} MK_INTRO The translation key of 'initializing' phase message
  */
-export default class ColorizeText {
-  /**
-   * Show yellow colorized CLI text
-   *
-   * @example
-   * ColorizeText.info('I am', 'an', 'info');
-   *
-   * // returns 'I am an info' in red color to show in Command Line Interface
-   *
-   * @function
-   * @name ColorizeText.info
-   * @param  {string[]} arguments The text strings to colorize
-   * @returns {string} Yellow CLI text
-   */
-  static info(...args: string[]) {
-    return chalk.yellow(...args);
-  }
+export default class RestartCommand {
+  MK_INTRO = 'restart.intro';
 
   /**
-   * Show magenta colorized CLI text
-   *
-   * @example
-   * ColorizeText.warn('I am', 'a', 'warn!');
-   *
-   * // returns 'I am a warn!' in magenta color to show in Command Line Interface
-   *
-   * @function
-   * @name ColorizeText.warn
-   * @param  {string[]} arguments The text strings to colorize
-   * @returns {string} Magenta CLI text
+   * The main method to call 'stop' command and then call 'start' command by using their respective classes.
    */
-  static warn(...args: string[]) {
-    return chalk.magenta(...args);
-  }
+  execute() {
+    validateBuildDir();
 
-  /**
-   * Show red colorized CLI text
-   *
-   * @example
-   * ColorizeText.danger('I am', 'dangerous!');
-   *
-   * // returns 'I am dangerous!' in red color to show in Command Line Interface
-   *
-   * @function
-   * @name ColorizeText.danger
-   * @param  {string[]} arguments The text strings to colorize
-   * @returns {string} Red CLI text
-   */
-  static danger(...args: string[]) {
-    return chalk.red(...args);
+    const serverName = getServerName();
+
+    console.log(ColorizeText.info(i18n.t(this.MK_INTRO, {
+      serverName,
+    })));
+    console.log('');
+
+    const stopCommand = new StopCommand();
+    stopCommand.execute();
+
+    const startCommand = new StartCommand();
+    startCommand.execute();
   }
 }
 </code></pre>

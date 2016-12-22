@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>BuildCommand - Documentation</title>
+    <title>I18nWrapper - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">BuildCommand</h1>
+    <h1 class="page-title">I18nWrapper</h1>
     
 
     
@@ -40,7 +40,7 @@
 <header>
     
         <h2>
-        BuildCommand
+        I18nWrapper
         </h2>
         
     
@@ -53,7 +53,7 @@
 
     
 
-    <h4 class="name" id="BuildCommand"><span class="type-signature"></span>new BuildCommand<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="I18nWrapper"><span class="type-signature"></span>new I18nWrapper<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -65,7 +65,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="packages_mastery_build_components_BuildCommand.js.html">packages/mastery/build/components/BuildCommand.js</a>, <a href="packages_mastery_build_components_BuildCommand.js.html#line65">line 65</a>
+        <a href="services_I18nWrapper.js.html">services/I18nWrapper.js</a>, <a href="services_I18nWrapper.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -128,7 +128,7 @@
 
         <tr>
             
-                <td class="name"><code>BUILD_DIR</code></td>
+                <td class="name"><code>CK_LOCALE</code></td>
             
 
             <td class="type">
@@ -144,214 +144,7 @@
 
             
 
-            <td class="description last">Build directory relative path</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>JS_GLOB</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">A glob pattern where javascript files are</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>BABEL_RECIPES</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Babel configuration for transforming es6 MasteryJS source codes</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>COPY_GLOB</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;string></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Glob patterns where non javascript files are</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>MK_INTRO</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The translation key of 'initializing' phase message</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>MK_BUILD_SUCCESS</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The translation key of 'build success' phase message</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>MK_CLEANING</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The translation key of 'cleaning' phase message</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>MK_COPYING_NON_JS</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The translation key of 'copying non javascript files' phase message</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>MK_COPYING_JS</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The translation key of 'copying javascript files' phase message</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>MK_WRITING_RUN_CONF</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The translation key of 'writing mastery.run.js file' phase message</td>
+            <td class="description last">Configuration key to retrieve the locale code from config.json</td>
         </tr>
 
     
@@ -364,7 +157,7 @@
 
 
 <div class="description">
-    The main class that handles the 'build' command execution.
+    A wrapper for MasteryCLI i18n feature
 </div>
 
 
@@ -395,6 +188,17 @@
     </div>
 
     
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li>Polyglot</li>
+    </ul>
+
+
+    
 
     
 
@@ -414,7 +218,7 @@
 
     
 
-    <h4 class="name" id="copyJS"><span class="type-signature"></span>copyJS<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="getLocale"><span class="type-signature"></span>getLocale<span class="signature">(lang)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
@@ -426,7 +230,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="packages_mastery_build_components_BuildCommand.js.html">packages/mastery/build/components/BuildCommand.js</a>, <a href="packages_mastery_build_components_BuildCommand.js.html#line123">line 123</a>
+        <a href="services_I18nWrapper.js.html">services/I18nWrapper.js</a>, <a href="services_I18nWrapper.js.html#line35">line 35</a>
     </li></ul></dd>
     
 
@@ -466,7 +270,7 @@
 
 
 <div class="description">
-    Copy javascript files -> transform using babel -> babili.
+    Retrieve current selected locale from global.conf
 </div>
 
 
@@ -477,6 +281,55 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>lang</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -494,6 +347,10 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    The default locale
+</div>
+
 
 
 <dl class="param-type">
@@ -502,7 +359,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise</span>
+<span class="param-type">string</span>
 
 
     </dd>
@@ -516,7 +373,7 @@
 
     
 
-    <h4 class="name" id="copyNonJS"><span class="type-signature"></span>copyNonJS<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="has"><span class="type-signature"></span>has<span class="signature">(key, lang)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
 
     
 
@@ -528,7 +385,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="packages_mastery_build_components_BuildCommand.js.html">packages/mastery/build/components/BuildCommand.js</a>, <a href="packages_mastery_build_components_BuildCommand.js.html#line103">line 103</a>
+        <a href="services_I18nWrapper.js.html">services/I18nWrapper.js</a>, <a href="services_I18nWrapper.js.html#line46">line 46</a>
     </li></ul></dd>
     
 
@@ -568,7 +425,7 @@
 
 
 <div class="description">
-    Copy none javascript files such as json configuration files, etc.
+    Check if a translation key has its translated message
 </div>
 
 
@@ -579,6 +436,78 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The translation key to check</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lang</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Language code</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -596,6 +525,10 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    Return true if translated message, otherwise return false
+</div>
+
 
 
 <dl class="param-type">
@@ -604,7 +537,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise</span>
+<span class="param-type">Boolean</span>
 
 
     </dd>
@@ -618,7 +551,7 @@
 
     
 
-    <h4 class="name" id="execute"><span class="type-signature"></span>execute<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="t"><span class="type-signature"></span>t<span class="signature">(key, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
@@ -630,7 +563,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="packages_mastery_build_components_BuildCommand.js.html">packages/mastery/build/components/BuildCommand.js</a>, <a href="packages_mastery_build_components_BuildCommand.js.html#line155">line 155</a>
+        <a href="services_I18nWrapper.js.html">services/I18nWrapper.js</a>, <a href="services_I18nWrapper.js.html#line64">line 64</a>
     </li></ul></dd>
     
 
@@ -661,6 +594,13 @@
     
 
     
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/airbnb/polyglot.js#polyglotprototypetkey-interpolationoptions">https://github.com/airbnb/polyglot.js#polyglotprototypetkey-interpolationoptions</a></li>
+        </ul>
+    </dd>
+    
 
     
 </dl>
@@ -670,7 +610,7 @@
 
 
 <div class="description">
-    The main method to call another methods sequentially, including decorations output.
+    Find the translation message based on translation key and current locale
 </div>
 
 
@@ -681,6 +621,110 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">The translation key to translate</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>{}</code>
+                
+                </td>
+            
+
+            <td class="description last">The translation variable values if the translated message does have any variable to replace</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -698,6 +742,10 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    The translated message if exists, otherwise return its key back
+</div>
+
 
 
 <dl class="param-type">
@@ -706,97 +754,13 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise</span>
+<span class="param-type">string</span>
 
 
     </dd>
 </dl>
 
     
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="writeRunConf"><span class="type-signature"></span>writeRunConf<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="packages_mastery_build_components_BuildCommand.js.html">packages/mastery/build/components/BuildCommand.js</a>, <a href="packages_mastery_build_components_BuildCommand.js.html#line140">line 140</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    Write mastery.run.json file, append 'name' key value from project name question answered by user before.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         
