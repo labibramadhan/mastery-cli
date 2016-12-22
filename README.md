@@ -14,8 +14,8 @@ Command line utility to get started easily on [MasteryJS](https://github.com/lab
     1. [Prerequisites](#prerequisites)
     1. [Installation](#installation)
 1. [Commands](#commands)
-    1. [Server Management][#server-management]
-    1. [CLI Configuration][#cli-configuration]
+    1. [Server Management](#server-management)
+    1. [CLI Configuration](#cli-configuration)
 
 ## Main Features
 
@@ -153,6 +153,9 @@ Usage:
 ```
 mastery conf [key] [value]
 ```
+
+- **[key]** Configuration key to change its value.
+- **[value]** The new configuration value.
 
 Example for changing the CLI language to Indonesian:
 ```
