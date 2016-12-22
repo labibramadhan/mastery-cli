@@ -1,6 +1,6 @@
 # MasteryJS Command Line Utility
 
-Command line utility to get started easily on [MasteryJS](https://github.com/labibramadhan/mastery).
+Command line utility to get started easily on [MasteryJS](https://github.com/labibramadhan/mastery), a scalable REST API framework build on top of Hapi and Sequelize.
 
 [![npm version](https://badge.fury.io/js/mastery.svg)](https://badge.fury.io/js/mastery)
 [![Dependency Status](https://david-dm.org/labibramadhan/mastery-cli.svg)](https://david-dm.org/labibramadhan/mastery-cli)
