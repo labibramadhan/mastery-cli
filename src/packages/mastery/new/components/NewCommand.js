@@ -47,24 +47,24 @@ export default class NewCommand {
   async querying() {
     this.questions = [{
       name: 'name',
-      message: i18n.t('mastery.questions.project.name'),
+      message: i18n.t('mastery.questions.new.name'),
       default: _.kebabCase(path.basename(this.resolvedDestination)),
     }, {
       name: 'version',
-      message: i18n.t('mastery.questions.project.version'),
+      message: i18n.t('mastery.questions.new.version'),
       default: '0.1.0',
     }, {
       name: 'license',
-      message: i18n.t('mastery.questions.project.license'),
+      message: i18n.t('mastery.questions.new.license'),
     }, {
       name: 'author',
-      message: i18n.t('mastery.questions.project.author'),
+      message: i18n.t('mastery.questions.new.author'),
     }, {
       name: 'email',
-      message: i18n.t('mastery.questions.project.email'),
+      message: i18n.t('mastery.questions.new.email'),
     }, {
       name: 'url',
-      message: i18n.t('mastery.questions.project.url'),
+      message: i18n.t('mastery.questions.new.url'),
     }];
     return await inquirer.prompt(this.questions);
   }
@@ -144,7 +144,7 @@ export default class NewCommand {
       '**  This commands will be available inside build directory:\n',
       '**  >_ mastery start\n',
       '**  >_ mastery stop\n',
-      '**  >_ mastery reload\n',
+      '**  >_ mastery restart\n',
       '**\n',
       '**  Remember to always type the following command if you get lost!\n',
       '**  >_ mastery --help\n',

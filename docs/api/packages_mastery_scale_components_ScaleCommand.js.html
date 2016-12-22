@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>StopCommand - Documentation</title>
+    <title>packages/mastery/scale/components/ScaleCommand.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,304 +27,87 @@
 
 <div id="main">
     
-    <h1 class="page-title">StopCommand</h1>
+    <h1 class="page-title">packages/mastery/scale/components/ScaleCommand.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-        StopCommand
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-
-    <h4 class="name" id="StopCommand"><span class="type-signature"></span>new StopCommand<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="packages_mastery_stop_components_StopCommand.js.html">packages/mastery/stop/components/StopCommand.js</a>, <a href="packages_mastery_stop_components_StopCommand.js.html#line18">line 18</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>MK_INTRO</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The translation key of 'initializing' phase message</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>MK_STOP_SUCCESS</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The translation key of 'server stopped' phase message</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<div class="description">
-    The main class that handles the 'stop' command execution.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="execute"><span class="type-signature"></span>execute<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="packages_mastery_stop_components_StopCommand.js.html">packages/mastery/stop/components/StopCommand.js</a>, <a href="packages_mastery_stop_components_StopCommand.js.html#line37">line 37</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="CommonServices.html#.getServerName">CommonServices.getServerName</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    The main method to exec 'pm2 stop {serverName}' command with inherited stdio, also output some text as decoration.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {
+  execSync,
+} from 'child_process';
+import inquirer from 'inquirer';
+
+const ColorizeText = requireF('services/ColorizeText');
+const {
+  getServerName,
+} = requireF('services/CommonServices');
+const {
+  validateBuildDir,
+} = requireF('services/CommonValidations');
+
+/**
+ * The main class that handles the 'scale' command execution.
+ *
+ * @export
+ * @class ScaleCommand
+ * @property {string} MK_INTRO The translation key of 'initializing' phase message.
+ */
+export default class ScaleCommand {
+  MK_INTRO = 'scale.intro';
+
+
+  /**
+   * Retrieve cluster length if its not defined on the CLI arguments.
+   *
+   * @returns {Promise.&lt;Object[]>} User answers, with question key as its key and answer as its value
+   */
+  async query() {
+    const questions = [{
+      name: 'length',
+      message: i18n.t('mastery.questions.scale.length'),
+      default: 0,
+    }];
+
+    return await inquirer.prompt(questions);
+  }
+
+  /**
+   * The main method to call another methods sequentially, including decorations output. Then, exec 'pm2 scale' command.
+   *
+   * @param {string} [length] The cluster length to scale for
+   * @returns {Promise}
+   */
+  async execute(length) {
+    validateBuildDir();
+
+    const serverName = getServerName();
+
+    console.log(ColorizeText.info(i18n.t(this.MK_INTRO, {
+      serverName,
+    })));
+    console.log('');
+
+    let clusterLength;
+    if (!length) {
+      const answers = await this.query();
+      clusterLength = answers.length;
+    } else {
+      clusterLength = length;
+    }
+
+    execSync(`${constants.PM2_BIN} scale ${serverName} ${clusterLength}`, {
+      stdio: 'inherit',
+    });
+  }
+}
+</code></pre>
+        </article>
+    </section>
 
 
 
@@ -334,7 +117,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Dec 23 2016 01:31:43 GMT+0700 (WIB) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Dec 23 2016 01:31:42 GMT+0700 (WIB) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

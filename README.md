@@ -13,7 +13,9 @@ Command line utility to get started easily on [MasteryJS](https://github.com/lab
 1. [Getting Started](#getting-started)
     1. [Prerequisites](#prerequisites)
     1. [Installation](#installation)
-    1. [Running](#running)
+1. [Commands](#commands)
+    1. [Server Management][#server-management]
+    1. [CLI Configuration][#cli-configuration]
 
 ## Main Features
 
@@ -45,9 +47,114 @@ npm install -g mastery
 sudo npm install -g mastery
 ```
 
-### Running
+## Commands
 
-To get started, type:
+### Server Management
+
+#### New
+Create a new MasteryJS project, cloning/download the latest source from [MasteryJS repo](https://github.com/labibramadhan/mastery).
+
+**This command can be executed anywhere.**
+
+Usage:
 ```
-mastery --help
+mastery new [destination]
+```
+- **[destination]** is the path where the new project will be.
+
+After that, a wizard will showing and there are some questions to follow.
+
+#### Serve
+Turn on MasteryJS directly from the source using [babel-node](https://babeljs.io/docs/usage/cli/#babel-node).
+
+**This command must be executed inside the root of MasteryJS project.**
+
+Usage:
+```
+mastery serve -i|--inspect -p|--port <n>
+```
+- **-i**|**--inspect** enable Chrome Developer Tools Inspector. This argument is optional.
+
+- **-p|--port \<n>** enable --debug-brk feature, to debug using any supported IDE. Fill **\<n>** with a port number.
+
+#### Build
+Build a MasteryJS project, this will transform MasteryJS source codes into ES2015 minified codes using babel + uglify.
+Also, a mastery.run.json file will be created for the [PM2 needs](http://pm2.keymetrics.io/docs/usage/application-declaration/#json-format).
+After that, a 'build' directory will exist. You can then deploy this directory.
+
+**This command must be executed inside the root of MasteryJS project.**
+
+Usage:
+```
+mastery build
+```
+
+#### Start
+Start MasteryJS server that has been built before using [PM2](http://pm2.keymetrics.io/docs/usage/quick-start/#usage).
+By default, the processes spawned are using [cluster mode](http://pm2.keymetrics.io/docs/usage/cluster-mode/).
+
+**This command must be executed inside the build of MasteryJS project.**
+
+Usage:
+```
+mastery start
+```
+
+#### Stop
+Stop MasteryJS server.
+
+**This command must be executed inside the build of MasteryJS project.**
+
+Usage:
+```
+mastery stop
+```
+
+#### Restart
+Restart MasteryJS server. This will execute the stop and start commands.
+
+**This command must be executed inside the build of MasteryJS project.**
+
+Usage:
+```
+mastery restart
+```
+
+#### Status
+Launch [PM2 Process Monitoring](http://pm2.keymetrics.io/docs/usage/monitoring/).
+
+**This command can be executed anywhere.**
+
+Usage:
+```
+mastery status
+```
+
+#### Scale
+Scale MasteryJS cluster processes length that currently running.
+
+**This command must be executed inside the build of MasteryJS project.**
+
+Usage:
+```
+mastery scale [length]
+```
+
+- **[length]** is optional. If length is not provided, a question will be prompted to define the length.
+
+### CLI Management
+
+#### Conf
+Change CLI configuration [config.json](src/config.js) value and change CLI language as well.
+
+**This command can be executed anywhere.**
+
+Usage:
+```
+mastery conf [key] [value]
+```
+
+Example for changing the CLI language to Indonesian:
+```
+mastery conf lang id
 ```

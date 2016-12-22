@@ -23,8 +23,12 @@
   "mastery.stop.intro": "Memberhentikan server %{serverName}..",
   "mastery.stop.success": "Server %{serverName} telah berhenti",
 
-  "mastery.questions.project.name": "Nama project:",
-  "mastery.questions.project.version": "Versi awal project:",
-  "mastery.questions.project.license": "Lisensi:",
-  "mastery.questions.project.author": "Pembuat:"
+  "mastery.scale.intro": "Scaling jumlah cluster %{serverName} server..",
+
+  "mastery.questions.new.name": "Nama project:",
+  "mastery.questions.new.version": "Versi awal project:",
+  "mastery.questions.new.license": "Lisensi:",
+  "mastery.questions.new.author": "Pembuat:",
+
+  "mastery.questions.scale.length": "Jumlah cluster:"
 }

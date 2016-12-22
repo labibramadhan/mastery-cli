@@ -23,10 +23,14 @@
   "mastery.stop.intro": "Stopping %{serverName} server..",
   "mastery.stop.success": "%{serverName} server stopped",
 
-  "mastery.questions.project.name": "Project name:",
-  "mastery.questions.project.version": "Your project starting version number:",
-  "mastery.questions.project.license": "License:",
-  "mastery.questions.project.author": "Author:",
-  "mastery.questions.project.email": "Email:",
-  "mastery.questions.project.url": "Url:"
+  "mastery.scale.intro": "Scaling %{serverName} cluster length..",
+
+  "mastery.questions.new.name": "Project name:",
+  "mastery.questions.new.version": "Your project starting version number:",
+  "mastery.questions.new.license": "License:",
+  "mastery.questions.new.author": "Author:",
+  "mastery.questions.new.email": "Email:",
+  "mastery.questions.new.url": "Url:",
+
+  "mastery.questions.scale.length": "Cluster length:"
 }
