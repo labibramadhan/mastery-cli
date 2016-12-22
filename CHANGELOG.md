@@ -1,3 +1,7 @@
+1.0.0-alpha2 / 2016-12-23
+==================
+- Add scale command to scale current running MasteryJS server cluster processes length
+
 1.0.0-alpha1 / 2016-12-22
 ==================
 - Add build system for MasteryJS
